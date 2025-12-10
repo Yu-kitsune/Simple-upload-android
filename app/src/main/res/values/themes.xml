@@ -3,7 +3,16 @@
     <style name="Base.Theme.AI" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
     <style name="Theme.AI" parent="Base.Theme.AI" />
+    <style name="roundedImageView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <!-- <style name="Theme.AI" parent="Theme.Material3.DayNight.NoActionBar">
+    Primary brand color. -->
 </resources>
