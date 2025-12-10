@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="16dp">
+
+    <!-- Rounded Image on the left -->
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/item_image"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:padding="4dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/rounded_corners_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/roundedImageView"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/item_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/title"
+        android:textAppearance="?attr/textAppearanceTitleMedium"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/item_arrow_icon"
+        app:layout_constraintStart_toEndOf="@id/item_image"
+        app:layout_constraintTop_toTopOf="@id/item_image" />
+
+    <!-- Description TextView -->
+    <TextView
+        android:id="@+id/item_description"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/description"
+        android:textAppearance="?attr/textAppearanceBodyMedium"
+        app:layout_constraintEnd_toEndOf="@id/item_title"
+        app:layout_constraintStart_toStartOf="@id/item_title"
+        app:layout_constraintTop_toBottomOf="@id/item_title" />
+
+    <!-- Metadata TextView (Date and Time) -->
+    <TextView
+        android:id="@+id/item_metadata"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:drawablePadding="4dp"
+        android:gravity="center_vertical"
+        android:text="@string/Time"
+        android:textAppearance="?attr/textAppearanceBodySmall"
+        app:drawableStartCompat="@drawable/ic_add_circle_outline"
+        app:layout_constraintBottom_toBottomOf="@id/item_image"
+        app:layout_constraintStart_toStartOf="@id/item_title"
+        app:layout_constraintEnd_toEndOf="@id/item_title" />
+
+    <!-- Arrow Icon on the far right -->
+    <ImageView
+        android:id="@+id/item_arrow_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_arrow_right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
