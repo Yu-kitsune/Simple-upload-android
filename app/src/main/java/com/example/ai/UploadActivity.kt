@@ -20,6 +20,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.ai.databinding.ActivityMainBinding
 import com.example.ai.ApiConfig
+import com.example.ai.databinding.ActivityUploadBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -31,8 +32,8 @@ import java.io.FileOutputStream
 
 
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class UploadActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityUploadBinding
     private var currentImageUri: Uri? = null
     private var currentImageFile: File? = null
     private var isUploading = false
@@ -70,7 +71,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityUploadBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setupButtons()
@@ -141,7 +142,7 @@ class MainActivity : AppCompatActivity() {
             emptyState.visibility = View.GONE
             btnDeleteImage.visibility = View.VISIBLE
 
-            Glide.with(this@MainActivity)
+            Glide.with(this@UploadActivity)
                 .load(uri)
                 .into(imagePreview)
         }
@@ -180,7 +181,7 @@ class MainActivity : AppCompatActivity() {
 
                 if (file == null) {
                     Toast.makeText(
-                        this@MainActivity,
+                        this@UploadActivity,
                         "Không thể chuẩn bị file ảnh",
                         Toast.LENGTH_SHORT
                     ).show()
@@ -201,7 +202,7 @@ class MainActivity : AppCompatActivity() {
                         val result = response.body()!!
                         if (result.success) {
                             Toast.makeText(
-                                this@MainActivity,
+                                this@UploadActivity,
                                 "Tải lên thành công: ${result.message}",
                                 Toast.LENGTH_LONG
                             ).show()
@@ -209,14 +210,14 @@ class MainActivity : AppCompatActivity() {
                             // deleteImage()
                         } else {
                             Toast.makeText(
-                                this@MainActivity,
+                                this@UploadActivity,
                                 "Lỗi: ${result.message}",
                                 Toast.LENGTH_SHORT
                             ).show()
                         }
                     } else {
                         Toast.makeText(
-                            this@MainActivity,
+                            this@UploadActivity,
                             "Lỗi server: ${response.code()}",
                             Toast.LENGTH_SHORT
                         ).show()
@@ -226,7 +227,7 @@ class MainActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 withContext(Dispatchers.Main) {
                     Toast.makeText(
-                        this@MainActivity,
+                        this@UploadActivity,
                         "Lỗi: ${e.message}",
                         Toast.LENGTH_SHORT
                     ).show()
